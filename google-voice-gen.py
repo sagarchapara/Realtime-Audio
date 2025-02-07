@@ -77,14 +77,9 @@ MODEL = "models/gemini-2.0-flash"
 
 DEFAULT_MODE = "none"
 
-client = genai.Client(api_key="AIzaSyDh3ZH2DCq2cdFUtOVnuUHE8wZkM-myHyI", http_options={"api_version": "v1alpha"})
+client = genai.Client(api_key=os.environ.get("GOOGLE_API_KEY"), http_options={"api_version": "v1alpha"})
 
 system_prompt = '''
-You are a medical agent, who is responsible for making appointments for patients, You need to gather patient name, phone number, and the reason for the appointment.
-And once conversation is done, you need to output in the following format:
-
-TERMIMATE:
-```json{{"name": "John Doe", "phone": "123-456-7890", "reason": "I have a headache"}}```
 '''
 
 # While Gemini 2.0 Flash is in experimental preview mode, only one of AUDIO or
